@@ -7,7 +7,7 @@ class Solution:
                 second_max = max_element
                 max_element = i
             else:
-                if i >second_max :
+                if i >second_max:
                     second_max = i
         ans = (max_element-1) * (second_max-1)
         return ans
