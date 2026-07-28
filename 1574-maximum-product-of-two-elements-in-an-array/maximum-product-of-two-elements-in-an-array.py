@@ -1,10 +1,13 @@
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        curr_max = 0
-        for i in range(len(nums)):
-            for j in range(i+1 , len(nums)):
-                maximum = (nums[i]-1) * (nums[j]-1)
-                curr_max = max(curr_max, maximum)
-                j+=1
-            i+=1
-        return curr_max
+        max_element = 0
+        second_max= 0
+        for i in nums:
+            if i >=max_element:
+                second_max = max_element
+                max_element = i
+            else:
+                if i >second_max :
+                    second_max = i
+        ans = (max_element-1) * (second_max-1)
+        return ans
