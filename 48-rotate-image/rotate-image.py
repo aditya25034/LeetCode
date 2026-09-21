@@ -3,16 +3,10 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        rows = len(matrix)
-        cols = len(matrix[0])
-        res = [[0]*rows for _ in range(cols)]
         row = len(matrix)
-        col = len(matrix[0])
-        for i in range(len(matrix)):
-            for j in range(len(matrix[0])):
-                res[j][i] = matrix[i][j]
-        for i in range(len(matrix)):
-            res[i].reverse()
-        for i in range(len(matrix)):
-            for j in range(len(matrix)):
-                matrix[i][j] = res[i][j]
+        for i in range(row):
+            for j in range(row):
+                if j>i:
+                    matrix[i][j] , matrix[j][i] = matrix[j][i] , matrix[i][j]
+        for i in range(row):
+            matrix[i].reverse()
