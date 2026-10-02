@@ -1,8 +1,13 @@
 class Solution:
     def majorityElement(self, nums: list[int]) -> int:
-        n= len(nums)
-        hash_map = {}
-        for i in range(n):
-            hash_map[nums[i]] = hash_map.get(nums[i] , 0)+1
-            if hash_map[nums[i]] > (n/2):
-                return nums[i]
+        count =0
+        candidate = None
+        for i in nums:
+            if count == 0:
+                candidate = i
+            
+            if i == candidate:
+                count+=1
+            else:
+                count-=1
+        return candidate
