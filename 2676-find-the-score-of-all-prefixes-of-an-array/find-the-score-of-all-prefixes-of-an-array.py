@@ -1,5 +1,6 @@
 class Solution:
     def findPrefixScore(self, nums: list[int]) -> list[int]:
+        conver = []
         maximum = nums[0]
         prefix = 0
         for i in range(len(nums)):
