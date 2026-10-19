@@ -7,21 +7,13 @@ class Solution:
     def oddEvenList(self, head: ListNode | None) -> ListNode | None:
         if (not head) or (not head.next):
             return head
-        stack = []
-        curr = head
-        stack.append(curr.val)
-        while curr.next and curr.next.next:
-            # stack.append(curr.val)
-            curr = curr.next.next
-            stack.append(curr.val)
-        curr = head.next
-        while curr and curr.next:
-            stack.append(curr.val)
-            curr = curr.next.next
-        curr = head
-        i=0
-        while i<len(stack):
-            curr.val = stack[i]
-            curr = curr.next
-            i+=1
+        odd = head
+        even_head = head.next
+        even = head.next
+        while odd.next and even.next:
+            odd.next = even.next
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
+        odd.next = even_head
         return head
