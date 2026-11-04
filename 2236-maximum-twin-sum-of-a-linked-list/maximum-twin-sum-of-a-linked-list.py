@@ -5,19 +5,23 @@
 #         self.next = next
 class Solution:
     def pairSum(self, head: ListNode | None) -> int:
-        curr = head
-        ans = 0
         stack = []
-        while curr:
-            stack.append(curr.val)
-            curr = curr.next
+        slow = head
+        fast = head
+        ans = 0
+        while fast.next.next:
+            stack.append(slow.val)
+            slow = slow.next
+            fast = fast.next.next
+        stack.append(slow.val)
+        curr = slow.next
+        print(curr.val)
         print(stack)
-        i=0
-        j=len(stack)-1
-        while i<j:
-            curr_sum = stack[i] + stack[j]
+        while stack:
+            curr_sum = curr.val + stack.pop()
             if curr_sum > ans:
                 ans = curr_sum
-            i+=1
-            j-=1
-        return ans      
+            curr = curr.next
+        return ans
+
+
