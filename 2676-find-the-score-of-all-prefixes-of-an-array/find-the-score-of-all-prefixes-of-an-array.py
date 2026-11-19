@@ -11,7 +11,6 @@ class Solution:
         # return nums
 
 
-        conver = []
         prefix_sum = 0
         maximum = nums[0]
         for i in range(len(nums)):
@@ -19,6 +18,6 @@ class Solution:
                 maximum = nums[i]
             number = nums[i] + maximum
             prefix_sum += number
-            conver.append(prefix_sum)
-        return conver
+            nums[i] = prefix_sum
+        return nums
 
